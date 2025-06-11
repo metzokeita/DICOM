@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+  Configuration de base et styles globaux
+  =====================================
+*/
+@layer base {
+  :root {
+    --primary-color: #646cff;
+    --secondary-color: #61dafb;
+  }
+  
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+}
+
+/* 
+  Composants personnalisés
+  =======================
+*/
+@layer components {
+  /* Conteneur principal */
+  .container {
+    @apply mx-auto max-w-4xl px-5 py-8 text-center;
+    
+    /* Version responsive */
+    @screen md {
+      @apply px-8;
+    }
+  }
+  
+  /* En-tête */
+  .header {
+    @apply flex flex-col items-center justify-center mb-8;
+    
+    @screen md {
+      @apply flex-row;
+    }
+  }
+  
+  /* Logo */
+  .logo {
+    @apply h-24 p-6 transition-all duration-300;
+    will-change: filter;
+    
+    &:hover {
+      filter: drop-shadow(0 0 2em var(--primary-color));
+    }
+    
+    /* Variante React */
+    &.react:hover {
+      filter: drop-shadow(0 0 2em var(--secondary-color));
+    }
+  }
+  
+  /* Contenu principal */
+  .content {
+    @apply mb-8 space-y-6;
+  }
+  
+  /* Pied de page */
+  .footer {
+    @apply text-sm text-gray-500;
+    
+    a {
+      @apply text-blue-600 hover:underline;
+    }
+  }
+  
+  /* 
+    Ajout de composants réutilisables 
+    --------------------------------
+  */
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-colors;
+    
+    &-primary {
+      @apply bg-blue-600 text-white hover:bg-blue-700;
+    }
+    
+    &-secondary {
+      @apply bg-gray-200 text-gray-800 hover:bg-gray-300;
+    }
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-md p-6;
+  }
+}
+
+/* 
+  Utilitaires personnalisés
+  =========================
+*/
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+}
